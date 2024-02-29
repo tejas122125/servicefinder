@@ -18,15 +18,15 @@ const Layout = (
 function App() {
   return (
     <Routes>
-      {/* <Route path="/home" element={Layout}> */}
-      <Route path="/home" element={<Home />} />
-      <Route path="/jobs" element={<Outlet />}>
-        <Route index element={<Jobs />} />
-        <Route path="/jobs/:q" element={<Category />} />
+      <Route path="/" element={Layout}>
+        <Route path="/" element={<Home />} />
+        <Route path="/jobs" element={<Outlet />}>
+          <Route index element={<Jobs />} />
+          <Route path="/jobs/:q" element={<Category />} />
+        </Route>
+        <Route path="/work" element={<Work />} />
+        {/* <Route path="/workersignin" element={<Workersignin />} /> */}
       </Route>
-      <Route path="/workersignin" element={<Workersignin />} />
-      <Route path="/work" element={<Work />} />
-      {/* </Route> */}
     </Routes>
   );
 }
