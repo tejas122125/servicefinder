@@ -6,6 +6,11 @@ import Jobs from "./pages/Jobs";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Workersignin from "./pages/Workersignin";
+import Workersignup from "./pages/Workersignup";
+import Workersignupotp from "./pages/Workersignupotp";
+
+
+
 
 // const Layout = (
 //   <>
@@ -24,6 +29,10 @@ function App() {
         <Route path="/home" element={<Home />} />
         <Route path="/jobs" element={<Jobs />} />
         <Route path="/workersignin" element={<Workersignin/>} />
+        <Route path="/workersignup" element={<Workersignup/>} />
+        <Route path="/workersignup/verify-phone-number" element={<Workersignupotp/>} />
+
+
         <Route path="/work" element={<Work />} />
       {/* </Route> */}
     </Routes>
