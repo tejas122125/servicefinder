@@ -11,26 +11,16 @@ import Workersignup from "./pages/Workersignup";
 import Workersignupotp from "./pages/Workersignupotp";
 import Category from "./pages/Category";
 
-
-const Layout = (
-  <>
-    <Navbar />
-    <Outlet />
-    <Footer />
-  </>
-);
-
 function App() {
   return (
     <Routes>
-
-      <Route path="/home" element={Layout}>
-        <Route path="/home" element={<Home />} />
+      {/* <Route path="/" element={Layout}> */}
+        <Route path="/" element={<Home />} />
         <Route path="/jobs" element={<Jobs />} />
         <Route path="/workersignin" element={<Workersignin/>} />
         <Route path="/workersignup" element={<Workersignup/>} />
         <Route path="/workersignup/verify-phone-number" element={<Workersignupotp/>} />
-      </Route>
+      {/* </Route> */}
     </Routes>
   );
 }
