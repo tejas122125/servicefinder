@@ -5,6 +5,7 @@ import React from "react";
 import Jobs from "./pages/Jobs";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import Category from "./pages/Category";
 
 const Layout = (
   <>
@@ -19,7 +20,10 @@ function App() {
     <Routes>
       <Route path="/" element={Layout}>
         <Route path="/" element={<Home />} />
-        <Route path="/jobs" element={<Jobs />} />
+        <Route path="/jobs" element={<Outlet />}>
+          <Route index element={<Jobs />} />
+          <Route path="/jobs/:q" element={<Category />} />
+        </Route>
         <Route path="/work" element={<Work />} />
       </Route>
     </Routes>
