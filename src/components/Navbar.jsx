@@ -1,9 +1,9 @@
 import React from "react";
-
+import { motion } from "framer-motion";
 export default function Navbar() {
   return (
     <header className="text-gray-400 bg-gray-900 body-font">
-      <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+      <motion.div  animate={{ x: 0, y: 0, scale: 1,rotate: 0, opacity:1}} transition={{delay:0.4}} className="container mx-auto flex opacity-0 flex-wrap p-5 flex-col md:flex-row items-center">
         <a className="flex title-font font-medium items-center text-white mb-4 md:mb-0">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -45,7 +45,7 @@ export default function Navbar() {
             <path d="M5 12h14M12 5l7 7-7 7"></path>
           </svg>
         </button>
-      </div>
+      </motion.div>
     </header>
   );
 }

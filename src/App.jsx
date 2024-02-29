@@ -1,5 +1,6 @@
 import Home from "./pages/Home";
 import Work from "./pages/Work";
+import Hire from "./pages/Hire";
 import { Route, Routes, Router, Outlet } from "react-router-dom";
 import React from "react";
 import Jobs from "./pages/Jobs";
@@ -21,6 +22,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/jobs" element={<Jobs />} />
         <Route path="/work" element={<Work />} />
+        <Route path="/hire" element={<Hire />} />
       </Route>
     </Routes>
   );
