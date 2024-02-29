@@ -3,38 +3,39 @@ import React from "react";
 const Home = () => {
   return (
     <>
-      <section className="text-gray-400 bg-gray-900 body-font">
-        <div className="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
-          <div className="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
-            <h1 className="title-font sm:text-4xl text-3xl mb-4 font-medium text-white">
-              Home services at your
-              <br className="hidden lg:inline-block" />
-              doorstep
-            </h1>
-            <p className="mb-8 leading-relaxed">
-              At Service Finder, we are committed to delivering services to meet
-              your unique needs. Our team assists you in locating a variety of
-              different workers who can be of service For your daily household
-              needs.
-            </p>
-            <div className="flex justify-center">
-              <button className="inline-flex text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded text-lg">
-                Hire
-              </button>
-              <button className="ml-4 inline-flex text-gray-400 bg-gray-800 border-0 py-2 px-6 focus:outline-none hover:bg-gray-700 hover:text-white rounded text-lg">
-                <a href="/work">Work</a>
-              </button>
+      <section class="text-gray-400 bg-gray-900 body-font">
+        <div class="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
+            <div class="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
+                <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-white transition-opacity opacity-0 delay-500">
+                    Home services at your
+                    <br class="hidden lg:inline-block" />
+                    doorsteps
+                </h1>
+                <p class="mb-8 leading-relaxed transition-opacity delay-1000">
+                    At Service Finder, we are committed to delivering services to meet
+                    your unique needs. Our team assists you in locating a variety of
+                    different workers who can be of service For your daily household
+                    needs.
+                </p>
+                <div class="flex justify-center">
+                    <button class="inline-flex text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded text-lg">
+                        Hire
+                    </button>
+                    <button class="ml-4 inline-flex text-gray-400 bg-gray-800 border-0 py-2 px-6 focus:outline-none hover:bg-gray-700 hover:text-white rounded-xl text-lg">
+                        <a href="/work">Work</a>
+                    </button>
+                </div>
             </div>
-          </div>
-          <div className="lg:max-w-lg lg:w-full md:w-1/2 w-5/6">
-            <img
-              className="object-cover object-center rounded"
-              alt="hero"
-              src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?q=80&w=2070&auto=htmlFormat&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-            />
-          </div>
+            <div class="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 hover:scale-105">
+                <img
+                    class="object-cover object-center rounded rounded text-lg opacity-100 hover:scale-105 transition duration-700 ease-in-out rounded-xl"
+                    alt="hero"
+                    src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?q=80&w=2070&auto=htmlFormat&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                    onload="this.classList.add('opacity-100');" 
+                />
+            </div>
         </div>
-      </section>
+    </section>
 
       <section className="text-gray-400 bg-gray-900 body-font">
         <div className="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
