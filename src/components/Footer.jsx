@@ -3,7 +3,7 @@ import React from "react";
 export default function Footer() {
   return (
     <footer className="text-gray-400 bg-gray-900 body-font">
-      <div className="container px-5 py-8 mx-auto flex items-center sm:flex-row flex-col">
+      <div className="container px-5 py-8 mx-auto flex items-center sm:flex-row flex-col bottom-0">
         <a className="flex title-font font-medium items-center md:justify-start justify-center text-white">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -20,14 +20,14 @@ export default function Footer() {
           <span className="ml-3 text-xl">Service Finder</span>
         </a>
         <p className="text-sm text-gray-400 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-800 sm:py-2 sm:mt-0 mt-4">
-          © 2023 Tailblocks —
+          © 2024 Hackfest —
           <a
             href="https://twitter.com/knyttneve"
             className="text-gray-500 ml-1"
             target="_blank"
             rel="noopener noreferrer"
           >
-            @SDD1Leo
+            @ServiceFinder
           </a>
         </p>
         <span className="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
