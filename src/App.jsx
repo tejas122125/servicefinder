@@ -6,6 +6,7 @@ import React from "react";
 import Jobs from "./pages/Jobs";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import Category from "./pages/Category";
 
 const Layout = (
   <>
