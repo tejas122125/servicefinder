@@ -1,10 +1,9 @@
 const express = require("express");
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
 const passport = require("passport");
-const helmet = require("helmet");
 const cookieSession = require("cookie-session");
-const { verify } = require("crypto");
 require("dotenv").config();
+
 const bodyParser = require("body-parser");
 const path = require("path");
 
@@ -12,26 +11,82 @@ const baseurl = path.join(__dirname, "..", "dist");
 
 const app = express();
 const port = 3000;
-// const db = new pg.Client({
-//     user: "postgres",
-//     host: "localhost",
-//     database: "hack-fest",
-//     password: "123456",
-//     port: 5432,
-//   });
 
-//   db.connect();
+function checkLoggedIn(req, res, next) {
+  if (req.isAuthenticated()) {
+    next();
+  } else {
+    res.status(401).send("Unauthenticated, Please login");
+  }
+}
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use(express.static(baseurl));
+passport.use(
+  new GoogleStrategy(
+    {
+      clientID: process.env.GOOGLE_CLIENT_ID,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+      callbackURL: "/auth/google/callback",
+    },
+    function (accessToken, refreshToken, profile, done) {
+      console.log(profile);
+      return done(null, profile);
+    }
+  )
+);
 
-app.get("/profile", (req, res) => {
-  const latitude = req.body.latitude;
-  const longitude = req.body.longitude;
-
-  console.log("latitude" + latitude + "longitude" + longitude);
+// save user to cookie
+passport.serializeUser((user, done) => {
+  done(null, {
+    id: user.id,
+  });
 });
+
+// parse user form cookie
+passport.deserializeUser((user, done) => {
+  done(null, user);
+});
+
+app.use(
+  cookieSession({
+    name: "session",
+    keys: [process.env.AUTH_SECRET_1, process.env.AUTH_SECRET_2],
+    maxAge: 7 * 24 * 3600000, // 7 days
+  })
+);
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.get(
+  "/auth/google",
+  passport.authenticate("google", { scope: ["profile", "email"] })
+);
+
+app.get(
+  "/auth/google/callback",
+  passport.authenticate("google", {
+    failureRedirect: "/failure",
+    successRedirect: "/",
+    session: true,
+  })
+);
+
+app.get("/auth/logout", (req, res) => {
+  req.logOut();
+  res.redirect("/");
+});
+
+app.get("/failure", (req, res) => {
+  res.send("failed to log in!");
+});
+
+app.get("/user", (req, res) => {
+  res.json(req?.user || {});
+});
+
+app.use(express.static(baseurl));
 
 app.get("*", (req, res) => {
   res.sendFile(baseurl + "/index.html");
