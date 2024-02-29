@@ -21,9 +21,12 @@ function App() {
     <Routes>
       <Route path="/" element={Layout}>
         <Route path="/" element={<Home />} />
-        <Route path="/jobs" element={<Jobs />} />
+        <Route path="/jobs" element={<Outlet />}>
+          <Route index element={<Jobs />} />
+          <Route path="/jobs/:q" element={<Category />} />
+        </Route>
         <Route path="/work" element={<Work />} />
-        <Route path="/hire" element={<Hire />} />
+        {/* <Route path="/workersignin" element={<Workersignin />} /> */}
       </Route>
     </Routes>
   );
