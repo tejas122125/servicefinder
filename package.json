@@ -11,6 +11,8 @@
   },
   "dependencies": {
     "@clerk/clerk-react": "^4.30.6",
+    "afinn": "^1.0.3",
+    "natural": "^6.10.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.22.0"
