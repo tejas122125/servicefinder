@@ -1,10 +1,12 @@
-import express from "express";
-import bodyParser from "body-parser";
-import path, { dirname } from "path";
- import { fileURLToPath } from "url";
-// import pg from "pg";
-
-const __dirname =  dirname(fileURLToPath(import.meta.url));
+const express = require("express");
+const GoogleStrategy = require("passport-google-oauth20").Strategy;
+const passport = require("passport");
+const helmet = require("helmet");
+const cookieSession = require("cookie-session");
+const { verify } = require("crypto");
+require("dotenv").config();
+const bodyParser = require("body-parser");
+const path = require("path");
 
 const baseurl = path.join(__dirname, "..", "dist");
 
@@ -20,25 +22,21 @@ const port = 3000;
 
 //   db.connect();
 
-app.use(bodyParser.urlencoded({extended:true}));
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(express.static(baseurl));
 
+app.get("/profile", (req, res) => {
+  const latitude = req.body.latitude;
+  const longitude = req.body.longitude;
 
-app.get("/profile",(req,res)=>{
-    const latitude = req.body.latitude;
-    const longitude = req.body.longitude;
-
-    console.log("latitude" + latitude  + "longitude" +longitude);
-
-})
-
-
-app.get("*",(req,res)=>{
-    res.sendFile(baseurl + "/index.html");
+  console.log("latitude" + latitude + "longitude" + longitude);
 });
 
+app.get("*", (req, res) => {
+  res.sendFile(baseurl + "/index.html");
+});
 
-app.listen(port,() =>{
-    console.log(`your site is live at localhost ${port}`);
-})
+app.listen(port, () => {
+  console.log(`your site is live at localhost ${port}`);
+});
