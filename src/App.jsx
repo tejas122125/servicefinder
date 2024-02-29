@@ -5,23 +5,27 @@ import React from "react";
 import Jobs from "./pages/Jobs";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import Workersignin from "./pages/Workersignin";
 
-const Layout = (
-  <>
-    <Navbar />
-    <Outlet />
-    <Footer />
-  </>
-);
+// const Layout = (
+//   <>
+//   <div className="relative w-screen h-screen">
+//     <div className=""><Navbar /></div>
+//     <Outlet />
+//     <Footer />
+//     </div>
+//   </>
+// );
 
 function App() {
   return (
     <Routes>
-      <Route path="/" element={Layout}>
-        <Route path="/" element={<Home />} />
+      {/* <Route path="/home" element={Layout}> */}
+        <Route path="/home" element={<Home />} />
         <Route path="/jobs" element={<Jobs />} />
+        <Route path="/workersignin" element={<Workersignin/>} />
         <Route path="/work" element={<Work />} />
-      </Route>
+      {/* </Route> */}
     </Routes>
   );
 }
