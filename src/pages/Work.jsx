@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { saveAddress, saveWorkerToDb } from "../appwrite/api";
 
 const Work = () => {
   const [position, setPosition] = useState({ latitude: null, longitude: null });
@@ -14,6 +15,31 @@ const Work = () => {
     const data = Object.fromEntries(formData.entries());
 
     console.log(data);
+
+
+
+    const workerdata = {
+      name: data.name,
+      phone: data.phone,
+      email: data.email,
+      adhar: data.adhar,
+      price: data.price,
+    }
+const workerid = saveWorkerToDb(workerdata)
+
+const address = {
+  state: data.state,
+  city: data.city,
+  district: data.district,
+  place: data.place,
+  pincode: data.pincode,
+  id:workerid,
+  latitude:position.latitude,
+  longitude:position.longitude,
+}
+
+const addressid =  saveAddress(address)
+
   }
 
   useEffect(() => {
@@ -58,7 +84,7 @@ const Work = () => {
                       id="name"
                       name="name"
                       className="w-full bg-gray-800 bg-opacity-40 rounded border border-gray-700 focus:border-red-500 focus:bg-gray-900 focus:ring-2 focus:ring-red-900 text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-                      // style={{ width: "150%" }}
+                    // style={{ width: "150%" }}
                     />
                   </div>
                 </div>
@@ -76,7 +102,7 @@ const Work = () => {
                       id="name"
                       name="phone"
                       className="w-full bg-gray-800 bg-opacity-40 rounded border border-gray-700 focus:border-red-500 focus:bg-gray-900 focus:ring-2 focus:ring-red-900 text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-                      // style={{ width: "150%" }}
+                    // style={{ width: "150%" }}
                     />
                   </div>
                 </div>
@@ -87,7 +113,7 @@ const Work = () => {
                     <select
                       id="stateSelect"
                       className="w-full bg-gray-800 bg-opacity-40 rounded border border-gray-700 focus:border-red-500 focus:bg-gray-900 focus:ring-2 focus:ring-red-900 text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-                      // style={{ width: "150%" }}
+                    // style={{ width: "150%" }}
                     >
                       <option value="AN">Andaman and Nicobar Islands</option>
                       <option value="AP">Andhra Pradesh</option>
@@ -144,7 +170,7 @@ const Work = () => {
                       id="email"
                       name="email"
                       className="w-full bg-gray-800 bg-opacity-40 rounded border border-gray-700 focus:border-red-500 focus:bg-gray-900 focus:ring-2 focus:ring-red-900 text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-                      // style={{ width: "150%" }}
+                    // style={{ width: "150%" }}
                     />
                   </div>
                 </div>
@@ -162,7 +188,7 @@ const Work = () => {
                       id="email"
                       name="email"
                       className="w-full bg-gray-800 bg-opacity-40 rounded border border-gray-700 focus:border-red-500 focus:bg-gray-900 focus:ring-2 focus:ring-red-900 text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-                      // style={{ width: "150%" }}
+                    // style={{ width: "150%" }}
                     />
                   </div>
                 </div>
@@ -179,7 +205,7 @@ const Work = () => {
                       id="pin-code"
                       name="pin-code"
                       className="w-full bg-gray-800 bg-opacity-40 rounded border border-gray-700 focus:border-red-500 focus:bg-gray-900 focus:ring-2 focus:ring-red-900 text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-                      // style={{ width: "150%" }}
+                    // style={{ width: "150%" }}
                     />
                   </div>
                 </div>
@@ -196,7 +222,7 @@ const Work = () => {
                       id="experience"
                       name="experience"
                       className="w-full bg-gray-800 bg-opacity-40 rounded border border-gray-700 focus:border-red-500 focus:bg-gray-900 focus:ring-2 focus:ring-red-900 text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-                      // style={{ width: "150%" }}
+                    // style={{ width: "150%" }}
                     />
                   </div>
                 </div>
@@ -214,7 +240,7 @@ const Work = () => {
                       id="experience"
                       name="experience"
                       className="w-full bg-gray-800 bg-opacity-40 rounded border border-gray-700 focus:border-red-500 focus:bg-gray-900 focus:ring-2 focus:ring-red-900 text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-                      // style={{ width: "150%" }}
+                    // style={{ width: "150%" }}
                     />
                   </div>
                 </div>

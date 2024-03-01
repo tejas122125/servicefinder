@@ -11,9 +11,6 @@
   },
   "dependencies": {
     "@clerk/clerk-react": "^4.30.6",
-    "afinn": "^1.0.3",
-    "appwrite": "^13.0.2",
-    "express": "^4.18.3",
     "framer-motion": "^11.0.8",
     "natural": "^6.10.5",
     "react": "^18.2.0",

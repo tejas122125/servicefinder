@@ -61,24 +61,43 @@ export const getWorkerId =(name) =>{
 }
 
 export const saveUserToDb = (userdata)=>{
-    databases.createDocument("servicefinder","user", documentdata)
+    let documentid
+    databases.createDocument("servicefinder","user",userdata)
     .then(response => {
         
         console.log('Document created successfully:', response);
-        return response.$id
+        documentid =  response.$id
     })
     .catch(error => {
         console.error('Error creating document:', error);
     });
+    return documentid
 }
 export const saveWorkerToDb = (userdata)=>{
+let documentid
     databases.createDocument("servicefinder","worker", documentdata)
     .then(response => {
         
         console.log('Document created successfully:', response);
-        return response.$id
+        documentid =  response.$id
     })
     .catch(error => {
+        
         console.error('Error creating document:', error);
     });
+    return documentid 
 }
+export const saveAddress = (address)=>{
+    let documentid
+        databases.createDocument("servicefinder","address", address)
+        .then(response => {
+            
+            console.log('Document created successfully:', response);
+            documentid =  response.$id
+        })
+        .catch(error => {
+            
+            console.error('Error creating document:', error);
+        });
+        return documentid 
+    }

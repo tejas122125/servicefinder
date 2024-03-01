@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+import SigninBtn from "../auth/Auth";
 export default function Navbar() {
   return (
     <header className="text-gray-400 bg-gray-900 body-font">
@@ -32,7 +33,8 @@ export default function Navbar() {
           <a className="mr-5 hover:text-white">About Us</a>
         </nav>
         <button className="inline-flex items-center bg-gray-800 border-0 py-1 px-3 focus:outline-none hover:bg-gray-700 rounded text-base mt-4 md:mt-0">
-          <a href="/Workersignin" className="mr-5 hover:text-white">WorkerSignin</a>
+          {/* <a href="/Workersignin" className="mr-5 hover:text-white">WorkerSignin</a> */}
+          <SigninBtn />
           <svg
             fill="none"
             stroke="currentColor"
