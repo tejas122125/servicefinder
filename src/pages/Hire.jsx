@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 const Hire = () => {
   const [position, setPosition] = useState({ latitude: null, longitude: null });
@@ -31,14 +33,16 @@ const Hire = () => {
 
   return (
     <>
+      <Navbar />
       <section className="text-gray-400 bg-gray-900 body-font relative">
         <div className="container px-5 py-24 mx-auto">
           <div className="flex flex-col text-center w-full mb-12">
             <h1 className="sm:text-3xl text-2xl font-medium title-font mb-4 text-white">
-                 Register Here
+              Register Here
             </h1>
             <p className="lg:w-2/3 mx-auto leading-relaxed text-base">
-              You can get the workers for your household need according to your requirement
+              You can get the workers for your household need according to your
+              requirement
             </p>
           </div>
           <div className="lg:w-1/2 md:w-2/3 mx-auto">
@@ -218,7 +222,6 @@ const Hire = () => {
                     />
                   </div>
                 </div>
-                
 
                 <div className="p-2 w-full">
                   <div className="relative">
@@ -315,6 +318,7 @@ const Hire = () => {
           </div>
         </div>
       </section>
+      <Footer />
     </>
   );
 };

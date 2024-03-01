@@ -1,5 +1,6 @@
 const express = require("express");
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
+const cors = require("cors");
 const passport = require("passport");
 const cookieSession = require("cookie-session");
 require("dotenv").config();
@@ -20,6 +21,15 @@ function checkLoggedIn(req, res, next) {
   }
 }
 
+app.use(
+  cors({
+    origin: [
+      "http://localhost:5173/",
+      "http://localhost:5173",
+      "http://localhost:3000",
+    ],
+  })
+);
 app.use(bodyParser.urlencoded({ extended: true }));
 
 passport.use(
@@ -31,16 +41,15 @@ passport.use(
     },
     function (accessToken, refreshToken, profile, done) {
       console.log(profile);
-      return done(null, profile);
+      const { sub, name, email } = profile._json;
+      return done(null, { id: sub, name, email });
     }
   )
 );
 
 // save user to cookie
 passport.serializeUser((user, done) => {
-  done(null, {
-    id: user.id,
-  });
+  done(null, user);
 });
 
 // parse user form cookie
@@ -83,6 +92,7 @@ app.get("/failure", (req, res) => {
 });
 
 app.get("/user", (req, res) => {
+  console.log(req?.user);
   res.json(req?.user || {});
 });
 
