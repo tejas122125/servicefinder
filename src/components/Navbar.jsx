@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import SigninBtn from "../auth/Auth";
+
 export default function Navbar() {
   return (
     <header className="text-gray-400 bg-gray-900 body-font">
