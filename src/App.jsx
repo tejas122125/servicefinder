@@ -8,12 +8,14 @@ import Workersignin from "./pages/Workersignin";
 import Workersignup from "./pages/Workersignup";
 import Workersignupotp from "./pages/Workersignupotp";
 import Category from "./pages/Category";
+import Customers from "./pages/Customers";
 
 function App() {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/jobs" element={<Jobs />} />
+      <Route path="/customers" element={<Customers />} />
       <Route path="/jobs/:name" element={<Category />} />
       <Route path="/work" element={<Work />} />
       <Route path="/hire" element={<Hire />} />

@@ -24,6 +24,9 @@ export default function Navbar() {
           <a className="mr-5 hover:text-white" href="/">
             Home
           </a>
+          <a className="mr-5 hover:text-white" href="/customers">
+            Customers
+          </a>
           <a className="mr-5 hover:text-white" href="/jobs">
             Jobs
           </a>
