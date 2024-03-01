@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import {motion} from "framer-motion";
-import {toast} from "react-toastify";
+import { motion } from "framer-motion";
+// import {toast} from "react-toastify";
 
 const workers = [
   {
@@ -25,7 +25,7 @@ const workers = [
     rate: 400,
     available: true,
     experience: 5,
-    email: "yash@nayak"
+    email: "yash@nayak",
   },
   {
     name: "Rajat sahu",
@@ -36,7 +36,7 @@ const workers = [
     rate: 700,
     available: true,
     experience: 5,
-    email: "yash@nayak"
+    email: "yash@nayak",
   },
   {
     name: "Tajaswee yadav",
@@ -47,7 +47,7 @@ const workers = [
     rate: 300,
     available: true,
     experience: 5,
-    email: "yash@nayak"
+    email: "yash@nayak",
   },
 ];
 
@@ -66,22 +66,22 @@ export default function Category() {
     setIsDropdownOpen(false); // Close dropdown after sorting
   };
 
-  function handleSortByRating(){
+  function handleSortByRating() {
     const sorted = [...workers].sort((a, b) => b.rating - a.rating);
     setSortedWorkers(sorted);
-    setIsDropdownOpen(false); 
+    setIsDropdownOpen(false);
   }
 
   // TODO: add customer to worker's database
   function handleWorker(email) {
-      console.log(email);
-      toast.success("Request Sent Successfully");
+    console.log(email);
+    toast.success("Request Sent Successfully");
   }
 
   return (
     <>
       <Navbar />
-      <main className="h-screen bg-gray-900 p-4">
+      <main className="min-h-screen bg-gray-900 p-4">
         <div className="p-4 container flex justify-between">
           <h2 className="text-3xl capitalize">{category}</h2>
           <div className="relative inline-block text-left">
@@ -106,16 +106,32 @@ export default function Category() {
                 id="dropdown-menu"
                 className="absolute min-w-36 right-0 w-full mt-2 origin-top-right bg-gray-800 border border-gray-700 rounded-md shadow-lg ring-1 ring-black ring-opacity-5"
               >
-                <div className="py-1" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
-                  
-                  <button onClick={handleSortByPrice} className="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white" role="menuitem">
+                <div
+                  className="py-1"
+                  role="menu"
+                  aria-orientation="vertical"
+                  aria-labelledby="options-menu"
+                >
+                  <button
+                    onClick={handleSortByPrice}
+                    className="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white"
+                    role="menuitem"
+                  >
                     Price:low to high
                   </button>
-                  <button onClick={handleSortByRating} className="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white" role="menuitem">
+                  <button
+                    onClick={handleSortByRating}
+                    className="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white"
+                    role="menuitem"
+                  >
                     Sort by Rating
                   </button>
-                  <button onClick={handleSortByPrice} className="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white" role="menuitem">
-                  Price:high to low
+                  <button
+                    onClick={handleSortByPrice}
+                    className="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white"
+                    role="menuitem"
+                  >
+                    Price:high to low
                   </button>
                 </div>
               </div>
@@ -127,26 +143,42 @@ export default function Category() {
             <div className="w-full px-4" style={{ width: "680px" }}>
               <div className="flex flex-col items-center gap-4">
                 {sortedWorkers.map((worker, i) => (
-                  <motion.div animate={{opacity:1,y:-96}} transition={{delay: i * 0.2, duration: 0.5}}
+                  <motion.div
+                    animate={{ opacity: 1, y: -96 }}
+                    transition={{ delay: i * 0.2, duration: 0.5 }}
                     className="grid grid-cols-3 relative p-2 bg-gray-800 top-24 hover:outline opacity-0 shadow rounded w-full px-4 hover:scale-105 max-w-lg"
                     key={worker.id}
                   >
-                    <img className="h-36  col-span-1 w-36 rounded-full object-cover" src={worker.image} alt={worker.name} />
+                    <img
+                      className="h-36  col-span-1 w-36 rounded-full object-cover"
+                      src={worker.image}
+                      alt={worker.name}
+                    />
                     <div className="p-4 items-end col-span-2 flex-grow flex gap-4 flex-col">
                       <div className="flex flex-col gap-2">
                         <h3 className="font-bold text-xl">{worker.name}</h3>
                         <p className="flex gap-2 items-end justify-start">
-                          <span className="font-bold">₹{worker.rate}<span className="text-xs text-gray-300 font-semibold">/hr</span></span>
-                          <span className="bg-green-600 px-2 py-1 rounded text-xs">⭐{worker.rating}</span>
-                         
+                          <span className="font-bold">
+                            ₹{worker.rate}
+                            <span className="text-xs text-gray-300 font-semibold">
+                              /hr
+                            </span>
+                          </span>
+                          <span className="bg-green-600 px-2 py-1 rounded text-xs">
+                            ⭐{worker.rating}
+                          </span>
                         </p>
-                        
                       </div>
-                      <button onClick={()=>{handleWorker(worker.email)}} className="ml-auto text-xl bg-gray-600 rounded block px-4 py-2 text-gray-300 hover:bg-gray-700 hover:text-white" role="menuitem">
-                          Request
-                         </button>
+                      <button
+                        onClick={() => {
+                          handleWorker(worker.email);
+                        }}
+                        className="ml-auto text-xl bg-gray-600 rounded block px-4 py-2 text-gray-300 hover:bg-gray-700 hover:text-white"
+                        role="menuitem"
+                      >
+                        Request
+                      </button>
                     </div>
-                    
                   </motion.div>
                 ))}
               </div>
