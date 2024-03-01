@@ -5,7 +5,7 @@ import Footer from "../components/Footer";
 const workers = [
   {
     name: "Yash Nayak",
-    rating: 4.5,
+    rating: 1.5,
     image:
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTsSb-gy3TF9KbuQ4jWFwyG-OIwugRBMSTqgyYyEdeUhA&s",
     id: "45",
@@ -15,7 +15,7 @@ const workers = [
   },
   {
     name: "Birjendra singh",
-    rating: 4.5,
+    rating: 3.5,
     image:
       "https://mybestbio.com/wp-content/uploads/2023/08/traditional-Credit-Domestic-Helper-Loan-1.jpg",
     id: "45",
@@ -25,7 +25,7 @@ const workers = [
   },
   {
     name: "Rajat sahu",
-    rating: 4.5,
+    rating: 4.1,
     image:
       "https://mybestbio.com/wp-content/uploads/2023/08/traditional-Credit-Domestic-Helper-Loan-1.jpg",
     id: "45",
@@ -60,6 +60,12 @@ export default function Category() {
     setIsDropdownOpen(false); // Close dropdown after sorting
   };
 
+  function handleSortByRating(){
+    const sorted = [...workers].sort((a, b) => a.rating - b.rating);
+    setSortedWorkers(sorted);
+    setIsDropdownOpen(false); 
+  }
+
   return (
     <>
       <Navbar />
@@ -89,15 +95,13 @@ export default function Category() {
                 className="absolute right-0 w-full mt-2 origin-top-right bg-gray-800 border border-gray-700 rounded-md shadow-lg ring-1 ring-black ring-opacity-5"
               >
                 <div className="py-1" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
-                  <a href="#" className="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white" role="menuitem">
-                    Option 1
-                  </a>
-                  <a href="#" className="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white" role="menuitem">
-                    Option 2
-                  </a>
-                  <a href="#" className="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white" role="menuitem">
-                    Option 3
-                  </a>
+                  
+                  <button onClick={handleSortByPrice} className="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white" role="menuitem">
+                    Sort by Price
+                  </button>
+                  <button onClick={handleSortByRating} className="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white" role="menuitem">
+                    Sort by Rating
+                  </button>
                   <button onClick={handleSortByPrice} className="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white" role="menuitem">
                     Sort by Price
                   </button>

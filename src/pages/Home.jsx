@@ -22,12 +22,18 @@ const Home = () => {
                 daily household needs.
               </p>
               <div class="flex justify-center">
-                <button class="inline-flex text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded text-lg">
+                <a
+                  href="/hire"
+                  class="inline-flex text-gray-200 bg-red-500 hover:text-white border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded text-lg"
+                >
                   Hire
-                </button>
-                <button class="ml-4 inline-flex text-gray-400 bg-gray-800 border-0 py-2 px-6 focus:outline-none hover:bg-gray-700 hover:text-white rounded-xl text-lg">
-                  <a href="/work">Work</a>
-                </button>
+                </a>
+                <a
+                  href="/work"
+                  class="ml-4 inline-flex text-gray-400 bg-gray-800 border-0 py-2 px-6 focus:outline-none hover:bg-gray-700 hover:text-white rounded-xl text-lg"
+                >
+                  Work
+                </a>
               </div>
             </div>
             <div class="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 hover:scale-105">
