@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { saveAddress, saveWorkerToDb } from "../appwrite/api";
-import useUserStore from './userStore';
+// import useUserStore from './userStore';
 const Work = () => {
-  const { userId, setUserId } = useUserStore();
-  const [position, setPosition] = useState({ latitude: null, longitude: null });
+
+  const [position, setPosition] = useStates({ latitude: null, longitude: null });
   const [response, setResponse] = useState(null);
   function handleSubmit(e) {
     e.preventDefault();
