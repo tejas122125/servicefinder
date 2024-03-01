@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-
+import { saveAddress, saveWorkerToDb } from "../appwrite/api";
+import useUserStore from '../userauth';
 const Work = () => {
+  const { userId, setUserId } = useUserStore();
   const [position, setPosition] = useState({ latitude: null, longitude: null });
   const [response, setResponse] = useState(null);
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
     const formData = new FormData(e.target);
     formData.append("latitude", position.latitude);
@@ -28,7 +30,34 @@ const Work = () => {
     const data = Object.fromEntries(formData.entries());
 
     console.log(data);
-  }
+
+
+
+    const workerdata = {
+      id : "worker",
+      name: data.name,
+      phone: +data.phone,
+      email: data.email,
+      aadhar: +data.adhaar,
+      price: +data.price,
+    }
+ 
+const workerid = await saveWorkerToDb(workerdata)
+console.log("woreke",workerid)
+const address = {
+  state: data.state,
+  city: data.city,
+  district: data.district,
+  place: data.place,
+  pincode: +data.pincode,
+  id:workerid,
+  latitude:+position.latitude,
+  longitude:+position.longitude}
+
+const addressid =  saveAddress(address)
+console.log("address",addressid)
+}
+
 
   useEffect(() => {
     if ("geolocation" in navigator) {
@@ -73,7 +102,7 @@ const Work = () => {
                       id="name"
                       name="name"
                       className="w-full bg-gray-800 bg-opacity-40 rounded border border-gray-700 focus:border-red-500 focus:bg-gray-900 focus:ring-2 focus:ring-red-900 text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-                      // style={{ width: "150%" }}
+                    // style={{ width: "150%" }}
                     />
                   </div>
                 </div>
@@ -91,7 +120,7 @@ const Work = () => {
                       id="name"
                       name="phone"
                       className="w-full bg-gray-800 bg-opacity-40 rounded border border-gray-700 focus:border-red-500 focus:bg-gray-900 focus:ring-2 focus:ring-red-900 text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-                      // style={{ width: "150%" }}
+                    // style={{ width: "150%" }}
                     />
                   </div>
                 </div>
@@ -161,7 +190,7 @@ const Work = () => {
                       id="district"
                       name="district"
                       className="w-full bg-gray-800 bg-opacity-40 rounded border border-gray-700 focus:border-red-500 focus:bg-gray-900 focus:ring-2 focus:ring-red-900 text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-                      // style={{ width: "150%" }}
+                    // style={{ width: "150%" }}
                     />
                   </div>
                 </div>
@@ -179,7 +208,7 @@ const Work = () => {
                       id="city"
                       name="city"
                       className="w-full bg-gray-800 bg-opacity-40 rounded border border-gray-700 focus:border-red-500 focus:bg-gray-900 focus:ring-2 focus:ring-red-900 text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-                      // style={{ width: "150%" }}
+                    // style={{ width: "150%" }}
                     />
                   </div>
                 </div>
@@ -196,7 +225,7 @@ const Work = () => {
                       id="pin-code"
                       name="pin-code"
                       className="w-full bg-gray-800 bg-opacity-40 rounded border border-gray-700 focus:border-red-500 focus:bg-gray-900 focus:ring-2 focus:ring-red-900 text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-                      // style={{ width: "150%" }}
+                    // style={{ width: "150%" }}
                     />
                   </div>
                 </div>
@@ -213,7 +242,7 @@ const Work = () => {
                       id="experience"
                       name="experience"
                       className="w-full bg-gray-800 bg-opacity-40 rounded border border-gray-700 focus:border-red-500 focus:bg-gray-900 focus:ring-2 focus:ring-red-900 text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-                      // style={{ width: "150%" }}
+                    // style={{ width: "150%" }}
                     />
                   </div>
                 </div>
@@ -231,7 +260,7 @@ const Work = () => {
                       id="experience"
                       name="experience"
                       className="w-full bg-gray-800 bg-opacity-40 rounded border border-gray-700 focus:border-red-500 focus:bg-gray-900 focus:ring-2 focus:ring-red-900 text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-                      // style={{ width: "150%" }}
+                    // style={{ width: "150%" }}
                     />
                   </div>
                 </div>
@@ -357,6 +386,5 @@ const Work = () => {
       <Footer />
     </>
   );
-};
-
+              }
  export default Work;

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import { saveUserToDb } from "../appwrite/api";
 
 const Hire = () => {
   const [position, setPosition] = useState({ latitude: null, longitude: null });
@@ -14,7 +15,7 @@ const Hire = () => {
     // form data yaha milega
     // TODO: save data to database.
     const data = Object.fromEntries(formData.entries());
-
+saveUserToDb(data)
     console.log(data);
   }
 
