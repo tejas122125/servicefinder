@@ -1,14 +1,28 @@
 import React, { useEffect, useState } from "react";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 const Work = () => {
   const [position, setPosition] = useState({ latitude: null, longitude: null });
-
+  const [response, setResponse] = useState(null);
   function handleSubmit(e) {
     e.preventDefault();
     const formData = new FormData(e.target);
     formData.append("latitude", position.latitude);
     formData.append("longitude", position.longitude);
 
+    // fetch("/KuchBhi", {
+    //   method: "POST",
+    //   body: formData
+    // })
+    //   .then(response => response.json())
+    //   .then(data => {
+    //     // Set the response received from the backend
+    //     setResponse(data);
+    //   })
+    //   .catch(error => {
+    //     console.error('Error:', error);
+    //   });
     // form data yaha milega
     // TODO: save data to database.
     const data = Object.fromEntries(formData.entries());
@@ -31,6 +45,7 @@ const Work = () => {
 
   return (
     <>
+    <Navbar />
       <section className="text-gray-400 bg-gray-900 body-font relative">
         <div className="container px-5 py-24 mx-auto">
           <div className="flex flex-col text-center w-full mb-12">
@@ -44,7 +59,7 @@ const Work = () => {
           </div>
           <div className="lg:w-1/2 md:w-2/3 mx-auto">
             <div className="flex flex-col justyfy-center w-full">
-              <form onSubmit={handleSubmit} method="get">
+              <form onSubmit={handleSubmit} method="get" action="/method">
                 <div className="p-2 w-full">
                   <div className="relative">
                     <label
@@ -82,54 +97,56 @@ const Work = () => {
                 </div>
 
                 <div className="p-2 w-full">
-                  <div className="relative">
-                    <label htmlFor="stateSelect">Select a State:</label>
-                    <select
-                      id="stateSelect"
-                      className="w-full bg-gray-800 bg-opacity-40 rounded border border-gray-700 focus:border-red-500 focus:bg-gray-900 focus:ring-2 focus:ring-red-900 text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-                      // style={{ width: "150%" }}
-                    >
-                      <option value="AN">Andaman and Nicobar Islands</option>
-                      <option value="AP">Andhra Pradesh</option>
-                      <option value="AR">Arunachal Pradesh</option>
-                      <option value="AS">Assam</option>
-                      <option value="BR">Bihar</option>
-                      <option value="CH">Chandigarh</option>
-                      <option value="CT">Chhattisgarh</option>
-                      <option value="DN">
-                        Dadra and Nagar Haveli and Daman and Diu
-                      </option>
-                      <option value="DL">Delhi</option>
-                      <option value="GA">Goa</option>
-                      <option value="GJ">Gujarat</option>
-                      <option value="HR">Haryana</option>
-                      <option value="HP">Himachal Pradesh</option>
-                      <option value="JK">Jammu and Kashmir</option>
-                      <option value="JH">Jharkhand</option>
-                      <option value="KA">Karnataka</option>
-                      <option value="KL">Kerala</option>
-                      <option value="LD">Ladakh</option>
-                      <option value="LA">Lakshadweep</option>
-                      <option value="MP">Madhya Pradesh</option>
-                      <option value="MH">Maharashtra</option>
-                      <option value="MN">Manipur</option>
-                      <option value="ML">Meghalaya</option>
-                      <option value="MZ">Mizoram</option>
-                      <option value="NL">Nagaland</option>
-                      <option value="OR">Odisha</option>
-                      <option value="PY">Puducherry</option>
-                      <option value="PB">Punjab</option>
-                      <option value="RJ">Rajasthan</option>
-                      <option value="SK">Sikkim</option>
-                      <option value="TN">Tamil Nadu</option>
-                      <option value="TS">Telangana</option>
-                      <option value="TR">Tripura</option>
-                      <option value="UP">Uttar Pradesh</option>
-                      <option value="UK">Uttarakhand</option>
-                      <option value="WB">West Bengal</option>
-                    </select>
-                  </div>
-                </div>
+  <div className="relative">
+    <label htmlFor="state" className="leading-7 text-sm text-gray-400">
+      State
+    </label>
+    <select
+      id="state"
+      name="state"
+      className="w-full bg-gray-800 bg-opacity-40 rounded border border-gray-700 focus:border-red-500 focus:bg-gray-900 focus:ring-2 focus:ring-red-900 text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+    >
+      <option value="AN">Andaman and Nicobar Islands</option>
+      <option value="AP">Andhra Pradesh</option>
+      <option value="AR">Arunachal Pradesh</option>
+      <option value="AS">Assam</option>
+      <option value="BR">Bihar</option>
+      <option value="CH">Chandigarh</option>
+      <option value="CT">Chhattisgarh</option>
+      <option value="DN">
+        Dadra and Nagar Haveli and Daman and Diu
+      </option>
+      <option value="DL">Delhi</option>
+      <option value="GA">Goa</option>
+      <option value="GJ">Gujarat</option>
+      <option value="HR">Haryana</option>
+      <option value="HP">Himachal Pradesh</option>
+      <option value="JK">Jammu and Kashmir</option>
+      <option value="JH">Jharkhand</option>
+      <option value="KA">Karnataka</option>
+      <option value="KL">Kerala</option>
+      <option value="LD">Ladakh</option>
+      <option value="LA">Lakshadweep</option>
+      <option value="MP">Madhya Pradesh</option>
+      <option value="MH">Maharashtra</option>
+      <option value="MN">Manipur</option>
+      <option value="ML">Meghalaya</option>
+      <option value="MZ">Mizoram</option>
+      <option value="NL">Nagaland</option>
+      <option value="OR">Odisha</option>
+      <option value="PY">Puducherry</option>
+      <option value="PB">Punjab</option>
+      <option value="RJ">Rajasthan</option>
+      <option value="SK">Sikkim</option>
+      <option value="TN">Tamil Nadu</option>
+      <option value="TS">Telangana</option>
+      <option value="TR">Tripura</option>
+      <option value="UP">Uttar Pradesh</option>
+      <option value="UK">Uttarakhand</option>
+      <option value="WB">West Bengal</option>
+    </select>
+  </div>
+</div>
 
                 <div className="p-2 w-full">
                   <div className="relative">
@@ -140,9 +157,9 @@ const Work = () => {
                       district
                     </label>
                     <input
-                      type="email"
-                      id="email"
-                      name="email"
+                      type="text"
+                      id="district"
+                      name="district"
                       className="w-full bg-gray-800 bg-opacity-40 rounded border border-gray-700 focus:border-red-500 focus:bg-gray-900 focus:ring-2 focus:ring-red-900 text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                       // style={{ width: "150%" }}
                     />
@@ -152,15 +169,15 @@ const Work = () => {
                 <div className="p-2 w-full">
                   <div className="relative">
                     <label
-                      htmlFor="email"
+                      htmlFor="city"
                       className="leading-7 text-sm text-gray-400"
                     >
                       city
                     </label>
                     <input
-                      type="email"
-                      id="email"
-                      name="email"
+                      type="text"
+                      id="city"
+                      name="city"
                       className="w-full bg-gray-800 bg-opacity-40 rounded border border-gray-700 focus:border-red-500 focus:bg-gray-900 focus:ring-2 focus:ring-red-900 text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                       // style={{ width: "150%" }}
                     />
@@ -175,7 +192,7 @@ const Work = () => {
                       pin-code
                     </label>
                     <input
-                      type="pin-code"
+                      type="text"
                       id="pin-code"
                       name="pin-code"
                       className="w-full bg-gray-800 bg-opacity-40 rounded border border-gray-700 focus:border-red-500 focus:bg-gray-900 focus:ring-2 focus:ring-red-900 text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
@@ -192,7 +209,7 @@ const Work = () => {
                       experience
                     </label>
                     <input
-                      type="experience"
+                      type="integer"
                       id="experience"
                       name="experience"
                       className="w-full bg-gray-800 bg-opacity-40 rounded border border-gray-700 focus:border-red-500 focus:bg-gray-900 focus:ring-2 focus:ring-red-900 text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
@@ -220,11 +237,52 @@ const Work = () => {
                 </div>
 
                 <div className="p-2 w-full">
+                  <div className="relative">
+                    <label
+                      htmlFor="price"
+                      className="leading-7 text-sm text-gray-400"
+                    >
+                      Price
+                    </label>
+                    <input
+                      type="text"
+                      id="price"
+                      name="price"
+                      className="w-full bg-gray-800 bg-opacity-40 rounded border border-gray-700 focus:border-red-500 focus:bg-gray-900 focus:ring-2 focus:ring-red-900 text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                      // style={{ width: "150%" }}
+                    />
+                  </div>
+                </div>
+                 
+                <div className="p-2 w-full">
+                  <div className="relative">
+                    <label
+                      htmlFor="adhaar"
+                      className="leading-7 text-sm text-gray-400"
+                    >
+                      adhaar
+                    </label>
+                    <input
+                      type="text"
+                      id="adhaar"
+                      name="adhaar"
+                      className="w-full bg-gray-800 bg-opacity-40 rounded border border-gray-700 focus:border-red-500 focus:bg-gray-900 focus:ring-2 focus:ring-red-900 text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                      // style={{ width: "150%" }}
+                    />
+                  </div>
+                </div>
+                <div className="p-2 w-full">
                   <button className="flex mx-auto text-white bg-red-500 border-0 py-2 px-8 focus:outline-none hover:bg-red-600 rounded text-lg">
                     Submit
                   </button>
                 </div>
               </form>
+              {response && (
+                <div className="mt-8 p-4 bg-gray-800 text-white">
+                  <h2 className="text-lg font-bold mb-2">Response from Server:</h2>
+                  <pre>{JSON.stringify(response, null, 2)}</pre>
+                </div>
+              )}
               <div className="p-2 w-full pt-8 mt-8 border-t border-gray-800 text-center">
                 <a className="text-red-400">Service-fineder.ac.in</a>
                 <p className="leading-normal my-5">
@@ -295,9 +353,10 @@ const Work = () => {
             </div>
           </div>
         </div>
-      </section>
+      </section>  
+      <Footer />
     </>
   );
 };
 
-export default Work;
+ export default Work;
