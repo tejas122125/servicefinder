@@ -11,6 +11,8 @@
   },
   "dependencies": {
     "@clerk/clerk-react": "^4.30.6",
+    "appwrite": "^13.0.2",
+    "crypto": "^1.0.1",
     "framer-motion": "^11.0.8",
     "natural": "^6.10.5",
     "react": "^18.2.0",

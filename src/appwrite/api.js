@@ -1,5 +1,9 @@
 
-import { Client, Databases,Query } from "appwrite";
+import { Client, Databases,Query,ID  } from "appwrite";
+import useUserStore from './userStore';
+const { userId, setUserId } = useUserStore();
+const { workerID, setWorkerId } = useUserStore();
+
 
 const client = new Client()
     .setEndpoint('https://cloud.appwrite.io/v1')
@@ -60,12 +64,14 @@ export const getWorkerId =(name) =>{
     });
 }
 
+
 export const saveUserToDb = (userdata)=>{
     let documentid
-    databases.createDocument("servicefinder","user",userdata)
+    databases.createDocument("servicefinder","user",  ID.unique(),userdata)
     .then(response => {
         
         console.log('Document created successfully:', response);
+        setUserId(response.$id);
         documentid =  response.$id
     })
     .catch(error => {
@@ -73,13 +79,17 @@ export const saveUserToDb = (userdata)=>{
     });
     return documentid
 }
-export const saveWorkerToDb = (userdata)=>{
-let documentid
-    databases.createDocument("servicefinder","worker", documentdata)
+export const saveWorkerToDb = (data)=>{
+let documentid;
+// const workerid = generateRandomId(10)
+console.log(data.phone)
+    databases.createDocument("servicefinder","worker",ID.unique(),data)
     .then(response => {
         
         console.log('Document created successfully:', response);
         documentid =  response.$id
+        console.log(response.$id)
+        setWorkerId(response.$id)
     })
     .catch(error => {
         
@@ -89,11 +99,14 @@ let documentid
 }
 export const saveAddress = (address)=>{
     let documentid
-        databases.createDocument("servicefinder","address", address)
+    // console.log(workerid)
+        databases.createDocument("servicefinder","address", ID.unique(),address)
         .then(response => {
             
             console.log('Document created successfully:', response);
             documentid =  response.$id
+        console.log(response.$id)
+
         })
         .catch(error => {
             

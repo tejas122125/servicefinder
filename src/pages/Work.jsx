@@ -2,8 +2,9 @@ import React, { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { saveAddress, saveWorkerToDb } from "../appwrite/api";
-
+import useUserStore from './userStore';
 const Work = () => {
+  const { userId, setUserId } = useUserStore();
   const [position, setPosition] = useState({ latitude: null, longitude: null });
   const [response, setResponse] = useState(null);
   function handleSubmit(e) {
@@ -33,28 +34,30 @@ const Work = () => {
 
 
     const workerdata = {
+      id : "worker",
       name: data.name,
-      phone: data.phone,
+      phone: +data.phone,
       email: data.email,
-      adhar: data.adhar,
-      price: data.price,
+      aadhar: +data.adhaar,
+      price: +data.price,
     }
+ 
 const workerid = saveWorkerToDb(workerdata)
-
+console.log("woreke",workerid)
 const address = {
   state: data.state,
   city: data.city,
   district: data.district,
   place: data.place,
-  pincode: data.pincode,
+  pincode: +data.pincode,
   id:workerid,
-  latitude:position.latitude,
-  longitude:position.longitude,
-}
+  latitude:+position.latitude,
+  longitude:+position.longitude}
 
 const addressid =  saveAddress(address)
+console.log("address",addressid)
+}
 
-  }
 
   useEffect(() => {
     if ("geolocation" in navigator) {
@@ -383,6 +386,5 @@ const addressid =  saveAddress(address)
       <Footer />
     </>
   );
-};
-
+              }
  export default Work;
