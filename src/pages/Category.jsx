@@ -6,6 +6,28 @@ import { motion } from "framer-motion";
 
 const workers = [
   {
+    name: "Ashit Vora ",
+    rating: 4.8,
+    image:
+      "https://media.licdn.com/dms/image/D4D03AQEUnLiVwSx2fg/profile-displayphoto-shrink_800_800/0/1684841819327?e=1714608000&v=beta&t=NKelT0GW2F5Qk3ccc1QAl1_hoF9Cr0gU0PLl3qkMouo",
+    id: "653",
+    rate: 1000,
+    available: true,
+    experience: 10,
+    email: "kuweryfksj@nayak",
+  },
+  {
+    name: "Musaib Altaf",
+    rating: 1,
+    image:
+      "https://media.licdn.com/dms/image/D4D03AQFieSpO-CbEYA/profile-displayphoto-shrink_800_800/0/1702241608429?e=1714608000&v=beta&t=wgeUnqwO5LHRTLG0EX6H_xPydnkC7Zkw_SaMUz84ieo",
+    id: "65",
+    rate: 10,
+    available: true,
+    experience: 1,
+    email: "swayam@nayak",
+  },
+  {
     name: "Yash Nayak",
     rating: 1.5,
     image:
@@ -82,8 +104,8 @@ export default function Category() {
     <>
       <Navbar />
       <main className="min-h-screen bg-gray-900 p-4">
-        <div className="p-4 container flex justify-between">
-          <h2 className="text-3xl capitalize">{category}</h2>
+        <div className="p-4 container max-w-2xl mx-auto flex justify-between">
+          <h2 className="text-3xl capitalize font-bold">{category}</h2>
           <div className="relative inline-block text-left">
             <button
               id="dropdown-btn"
@@ -140,7 +162,20 @@ export default function Category() {
         </div>
         <div className="flex justify-center">
           <div className="flex justify-center">
-            <div className="w-full px-4" style={{ width: "680px" }}>
+            <div className="w-full px-4 flex gap-4">
+              <form className="flex flex-col gap-2">
+                <textarea
+                  className="bg-transparent border rounded h-96 w-96 p-4 border-gray-400 outline-none"
+                  name="desc"
+                  placeholder="Enter Job Description..."
+                  id="desc"
+                  cols="30"
+                  rows="30"
+                ></textarea>
+                <button className="px-3 py-1.5 bg-red-600 hover:bg-red-700 rounded">
+                  Search
+                </button>
+              </form>
               <div className="flex flex-col items-center gap-4">
                 {sortedWorkers.map((worker, i) => (
                   <motion.div
