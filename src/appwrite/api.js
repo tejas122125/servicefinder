@@ -1,9 +1,9 @@
 
 import { Client, Databases,Query,ID  } from "appwrite";
-import useUserStore from './userStore';
-const { userId, setUserId } = useUserStore();
-const { workerID, setWorkerId } = useUserStore();
-
+// import useUserStore from '../userauth';
+// const { userId, setUserId } = useUserStore();
+// const { workerID, setWorkerId } = useUserStore();
+let userid,workerid;
 
 const client = new Client()
     .setEndpoint('https://cloud.appwrite.io/v1')
@@ -71,13 +71,13 @@ export const saveUserToDb = (userdata)=>{
     .then(response => {
         
         console.log('Document created successfully:', response);
-        setUserId(response.$id);
-        documentid =  response.$id
+       
+        userid =  response.$id
     })
     .catch(error => {
         console.error('Error creating document:', error);
     });
-    return documentid
+    return userid
 }
 export const saveWorkerToDb = (data)=>{
 let documentid;
@@ -89,13 +89,14 @@ console.log(data.phone)
         console.log('Document created successfully:', response);
         documentid =  response.$id
         console.log(response.$id)
-        setWorkerId(response.$id)
+       workerid = response.$id
     })
     .catch(error => {
         
         console.error('Error creating document:', error);
     });
-    return documentid 
+    console.log("tejewlj",workerid)
+    return workerid 
 }
 export const saveAddress = (address)=>{
     let documentid
