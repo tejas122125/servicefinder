@@ -2,12 +2,12 @@ import React, { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { saveAddress, saveWorkerToDb } from "../appwrite/api";
-// import useUserStore from './userStore';
+import useUserStore from '../userauth';
 const Work = () => {
 
   const [position, setPosition] = useStates({ latitude: null, longitude: null });
   const [response, setResponse] = useState(null);
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
     const formData = new FormData(e.target);
     formData.append("latitude", position.latitude);
@@ -42,7 +42,7 @@ const Work = () => {
       price: +data.price,
     }
  
-const workerid = saveWorkerToDb(workerdata)
+const workerid = await saveWorkerToDb(workerdata)
 console.log("woreke",workerid)
 const address = {
   state: data.state,
