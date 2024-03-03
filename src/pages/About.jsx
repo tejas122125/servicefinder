@@ -1,13 +1,14 @@
 import React from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import {motion} from "framer-motion"; 
 
-export default function About() {
+function About() {
   return (
     <>
       <Navbar />
       <section className="text-gray-400 bg-gray-900 body-font">
-        <div className="container p-5 mx-auto flex flex-wrap">
+        <motion.div animate={{opacity:1,x:-35}} transition={{duration:0.4}} className="container p-5 mx-auto opacity-0 x:35 flex flex-wrap">
           <div className="flex flex-wrap -mx-4 mt-auto mb-auto lg:w-1/2 sm:w-2/3 content-start sm:pr-10">
             <div className="w-full sm:p-4 px-4 mb-6">
               <h1 className="title-font font-medium text-xl mb-2 text-white">
@@ -15,26 +16,26 @@ export default function About() {
               </h1>
               <div className="leading-relaxed">Best Service Deals</div>
             </div>
-            <div className="p-4 sm:w-1/2 lg:w-1/4 w-1/2">
-              <h2 className="title-font font-medium text-3xl text-white">
+            <motion.div animate={{opacity:1,y:-55}} transition={{duration:0.5}} className="p-4 opacity-0 y:-55 sm:w-1/2 lg:w-1/4 w-1/2">
+              <h2 className="title-font font-medium teyt-3yl text-white">
                 2.7K
               </h2>
               <p className="leading-relaxed">Users</p>
-            </div>
-            <div className="p-4 sm:w-1/2 lg:w-1/4 w-1/2">
+            </motion.div>
+            <motion.div animate={{opacity:1,y:-55}} transition={{duration:0.7}} className="p-4  opacity-0 y:-55 sm:w-1/2 lg:w-1/4 w-1/2">
               <h2 className="title-font font-medium text-3xl text-white">
                 1.8K
               </h2>
               <p className="leading-relaxed">Providers</p>
-            </div>
-            <div className="p-4 sm:w-1/2 lg:w-1/4 w-1/2">
+            </motion.div>
+            <motion.div animate={{opacity:1,y:-55}} transition={{duration:0.9}} className="p-4 opacity-0 y:-55 sm:w-1/2 lg:w-1/4 w-1/2">
               <h2 className="title-font font-medium text-3xl text-white">35</h2>
               <p className="leading-relaxed">Jobs</p>
-            </div>
-            <div className="p-4 sm:w-1/2 lg:w-1/4 w-1/2">
+            </motion.div>
+            <motion.div animate={{opacity:1,y:-55}} transition={{duration:1.1}} className="p-4 opacity-0 y:-55 sm:w-1/2 lg:w-1/4 w-1/2">
               <h2 className="title-font font-medium text-3xl text-white">4</h2>
               <p className="leading-relaxed">Categories</p>
-            </div>
+            </motion.div>
           </div>
           <div className="lg:w-1/2 sm:w-1/3 w-full rounded-lg overflow-hidden mt-6 sm:mt-0">
             <img
@@ -43,11 +44,11 @@ export default function About() {
               alt="stats"
             />
           </div>
-        </div>
+        </motion.div>
       </section>
 
       <section className="text-gray-400 bg-gray-900 body-font">
-        <div className="container px-5 py-24 mx-auto">
+        <motion.div animate={{opacity:1,x:-100}} transition={{delay:1.2,restSpeed:0.8}}className="container opacity-0 x:100 px-5 py-24 mx-auto">
           <h1 className="text-3xl font-medium title-font text-white mb-12 text-center">
             Testimonials
           </h1>
@@ -122,9 +123,11 @@ export default function About() {
               </div>
             </div>
           </div>
-        </div>
+        </motion.div>
       </section>
       <Footer />
     </>
   );
 }
+
+export default About;
