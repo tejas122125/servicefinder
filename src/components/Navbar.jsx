@@ -29,7 +29,7 @@ export default function Navbar() {
             Jobs
           </a>
           <a className="mr-5 hover:text-white" href="/work">
-            Join Us
+            Work
           </a>
           <a className="mr-5 hover:text-white" href="/hire">
             Hire

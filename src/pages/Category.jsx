@@ -2,52 +2,54 @@ import React, { useState } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import {motion} from "framer-motion";
-import {toast} from "react-toastify";
+import { getWorkerId,createWork } from "../appwrite/api";
+import useUserStore from '../userauth';
+// import {toast} from "react-toastify";
 
 const workers = [
   {
     name: "Yash Nayak",
     rating: 1.5,
     image:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTsSb-gy3TF9KbuQ4jWFwyG-OIwugRBMSTqgyYyEdeUhA&s",
+      "https://imgs.search.brave.com/MWlI8P3aJROiUDO9A-LqFyca9kSRIxOtCg_Vf1xd9BA/rs:fit:860:0:0/g:ce/aHR0cHM6Ly90NC5m/dGNkbi5uZXQvanBn/LzAyLzE1Lzg0LzQz/LzM2MF9GXzIxNTg0/NDMyNV90dFg5WWlJ/SXllYVI3TmU2RWFM/TGpNQW15NEd2UEM2/OS5qcGc",
     id: "45",
     rate: 500,
     available: true,
     experience: 5,
-    email: "yash@nayak",
+    email: "yash@gmail.com",
   },
   {
     name: "Birjendra singh",
     rating: 3.5,
     image:
-      "https://mybestbio.com/wp-content/uploads/2023/08/traditional-Credit-Domestic-Helper-Loan-1.jpg",
+      "https://imgs.search.brave.com/MWlI8P3aJROiUDO9A-LqFyca9kSRIxOtCg_Vf1xd9BA/rs:fit:860:0:0/g:ce/aHR0cHM6Ly90NC5m/dGNkbi5uZXQvanBn/LzAyLzE1Lzg0LzQz/LzM2MF9GXzIxNTg0/NDMyNV90dFg5WWlJ/SXllYVI3TmU2RWFM/TGpNQW15NEd2UEM2/OS5qcGc",
     id: "45",
     rate: 400,
     available: true,
     experience: 5,
-    email: "yash@nayak"
+    email: "brijendra@gmail.com"
   },
   {
     name: "Rajat sahu",
     rating: 4.1,
     image:
-      "https://mybestbio.com/wp-content/uploads/2023/08/traditional-Credit-Domestic-Helper-Loan-1.jpg",
+      "https://imgs.search.brave.com/MWlI8P3aJROiUDO9A-LqFyca9kSRIxOtCg_Vf1xd9BA/rs:fit:860:0:0/g:ce/aHR0cHM6Ly90NC5m/dGNkbi5uZXQvanBn/LzAyLzE1Lzg0LzQz/LzM2MF9GXzIxNTg0/NDMyNV90dFg5WWlJ/SXllYVI3TmU2RWFM/TGpNQW15NEd2UEM2/OS5qcGc",
     id: "45",
     rate: 700,
     available: true,
     experience: 5,
-    email: "yash@nayak"
+    email: "Rajat@gmail.com"
   },
   {
     name: "Tajaswee yadav",
     rating: 4.5,
     image:
-      "https://www.india.com/wp-content/uploads/2022/12/google-ceo-sundar-pichai.jpg",
+      "https://imgs.search.brave.com/MWlI8P3aJROiUDO9A-LqFyca9kSRIxOtCg_Vf1xd9BA/rs:fit:860:0:0/g:ce/aHR0cHM6Ly90NC5m/dGNkbi5uZXQvanBn/LzAyLzE1Lzg0LzQz/LzM2MF9GXzIxNTg0/NDMyNV90dFg5WWlJ/SXllYVI3TmU2RWFM/TGpNQW15NEd2UEM2/OS5qcGc",
     id: "45",
     rate: 300,
     available: true,
     experience: 5,
-    email: "yash@nayak"
+    email: "tejaswee@gmail.com"
   },
 ];
 
@@ -55,6 +57,7 @@ export default function Category() {
   const category = window.location.pathname.split("/")[2];
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [sortedWorkers, setSortedWorkers] = useState([...workers]);
+  const { userId, setUserId } = useUserStore();
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
@@ -73,15 +76,21 @@ export default function Category() {
   }
 
   // TODO: add customer to worker's database
-  function handleWorker(email) {
+  function handleWorker(email,name,rate,rating1) {
+    const to = getWorkerId(name)
+    const from  = userId
+    const workid = "workone"
+    const price = rate
+  const id = createWork({to:to,from:from,workid:workid,price:price})
+
       console.log(email);
-      toast.success("Request Sent Successfully");
+      toast.success("Request Sent Successfully contributed by service finfder");
   }
 
   return (
     <>
       <Navbar />
-      <main className="h-screen bg-gray-900 p-4">
+      <main className="min-h-screen bg-gray-900 p-4">
         <div className="p-4 container flex justify-between">
           <h2 className="text-3xl capitalize">{category}</h2>
           <div className="relative inline-block text-left">
@@ -142,7 +151,7 @@ export default function Category() {
                         </p>
                         
                       </div>
-                      <button onClick={()=>{handleWorker(worker.email)}} className="ml-auto text-xl bg-gray-600 rounded block px-4 py-2 text-gray-300 hover:bg-gray-700 hover:text-white" role="menuitem">
+                      <button onClick={()=>{handleWorker(worker.email,worker.name,worker.rate,worker.rating)}} className="ml-auto text-xl bg-gray-600 rounded block px-4 py-2 text-gray-300 hover:bg-gray-700 hover:text-white" role="menuitem">
                           Request
                          </button>
                     </div>

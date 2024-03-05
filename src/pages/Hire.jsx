@@ -2,11 +2,12 @@ import React, { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { saveUserToDb } from "../appwrite/api";
-
+import useUserStore from '../userauth';
 const Hire = () => {
+  const { userId, setUserId } = useUserStore();
   const [position, setPosition] = useState({ latitude: null, longitude: null });
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
     const formData = new FormData(e.target);
     formData.append("latitude", position.latitude);
@@ -15,7 +16,8 @@ const Hire = () => {
     // form data yaha milega
     // TODO: save data to database.
     const data = Object.fromEntries(formData.entries());
-saveUserToDb(data)
+const userid  = await saveUserToDb(data)
+setUserId(userid)
     console.log(data);
   }
 

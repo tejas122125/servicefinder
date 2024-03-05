@@ -3,7 +3,6 @@ import { Client, Databases,Query,ID  } from "appwrite";
 // import useUserStore from '../userauth';
 // const { userId, setUserId } = useUserStore();
 // const { workerID, setWorkerId } = useUserStore();
-let userid,workerid;
 
 const client = new Client()
     .setEndpoint('https://cloud.appwrite.io/v1')
@@ -25,6 +24,22 @@ const databases = new Databases(client)
         });
 }
 
+export const setAddress = (documentid,addressid)=>{
+    
+    // Call the update document method
+    
+    databases.updateDocument("servicefinder","worker", documentid, {address:addressid})
+        .then(response => {
+            console.log('Document updated successfully:', response);
+        })
+        .catch(error => {
+            console.error('Error updating document:', error);
+        });
+}
+
+
+
+
 export function getStatus(documentid){
     databases.getDocument("servicefinder","worker", documentid)
     .then(response => {
@@ -40,78 +55,45 @@ export function getStatus(documentid){
 }
 
 
-export function createWork (documentdata) {
-    databases.createDocument("servicefinder","work", documentdata)
-    .then(response => {
-        console.log('Document created successfully:', response);
-    })
-    .catch(error => {
-        console.error('Error creating document:', error);
-    });
+export const createWork =async (documentdata) =>{
+    const response =  await databases.createDocument("servicefinder","work", documentdata)
+    console.log('Document created successfully:', response);
+    const workid = response.$id
+    return workid
 }
-export const getWorkerId =(name) =>{
-    databases.listDocuments("servicefinder","worker",[
+export const getWorkerId =async (name) =>{
+    const response = databases.listDocuments("servicefinder","worker",[
         Query.equal('name', name)
     ])
-    .then(response => {
-        // Extract document IDs from the response
-        const documentIds = response.documents.map(doc => doc.$id);
-        return documentIds[0];
-        console.log('Document IDs:', documentIds);
-    })
-    .catch(error => {
-        console.error('Error listing documents:', error);
-    });
+    const documentIds = response.documents.map(doc => doc.$id);
+    console.log('Document IDs:', documentIds);
+    return documentIds[0];
 }
 
 
-export const saveUserToDb = (userdata)=>{
-    let documentid
-    databases.createDocument("servicefinder","user",  ID.unique(),userdata)
-    .then(response => {
-        
-        console.log('Document created successfully:', response);
-       
-        userid =  response.$id
-    })
-    .catch(error => {
-        console.error('Error creating document:', error);
-    });
+export const saveUserToDb = async (userdata)=>{
+    let userid
+   const response = await databases.createDocument("servicefinder","user",  ID.unique(),userdata)
+   console.log('Document created successfully:', response);
+   userid =  response.$id
+
     return userid
 }
-export const saveWorkerToDb = (data)=>{
-let documentid;
+export const saveWorkerToDb = async (data)=>{
+let workerid;
 // const workerid = generateRandomId(10)
 console.log(data.phone)
-    databases.createDocument("servicefinder","worker",ID.unique(),data)
-    .then(response => {
-        
-        console.log('Document created successfully:', response);
-        documentid =  response.$id
-        console.log(response.$id)
-       workerid = response.$id
-    })
-    .catch(error => {
-        
-        console.error('Error creating document:', error);
-    });
+  const response =  await databases.createDocument("servicefinder","worker",ID.unique(),data)
+  console.log('Document created successfully:', response);
+  workerid = response.$id
     console.log("tejewlj",workerid)
     return workerid 
 }
-export const saveAddress = (address)=>{
+export const saveAddress = async(address)=>{
     let documentid
     // console.log(workerid)
-        databases.createDocument("servicefinder","address", ID.unique(),address)
-        .then(response => {
-            
-            console.log('Document created successfully:', response);
-            documentid =  response.$id
-        console.log(response.$id)
-
-        })
-        .catch(error => {
-            
-            console.error('Error creating document:', error);
-        });
+       documentid = await databases.createDocument("servicefinder","address", ID.unique(),address)
+       console.log('Document created successfully:', response);
+       documentid =  response.$id
         return documentid 
     }
