@@ -58,7 +58,7 @@ const workers = [
     rate: 700,
     available: true,
     experience: 5,
-    email: "yash@nayak",
+    email: "rajatayash@nayak",
   },
   {
     name: "Tajaswee yadav",
