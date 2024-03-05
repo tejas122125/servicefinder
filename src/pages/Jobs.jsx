@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import { motion } from "framer-motion";
 
 export default function Jobs() {
   return (
@@ -17,7 +18,11 @@ export default function Jobs() {
               <div className="h-1 w-20 bg-red-500 rounded"></div>
             </div>
           </div>
-          <div className="flex flex-wrap overflow-hidden">
+          <motion.div
+            animate={{ opacity: 1, y: -96 }}
+            transition={{ duration: 0.5 }}
+            className="flex relative opacity-0 top-24 flex-wrap overflow-hidden"
+          >
             <Link
               to={"/jobs/househelp"}
               className="xl:w-1/4 md:w-1/2 p-4 hover:scale-105 transition-all ease-in-out"
@@ -90,7 +95,7 @@ export default function Jobs() {
                 </h2>
               </div>
             </Link>
-          </div>
+          </motion.div>
         </div>
       </section>
       <Footer />

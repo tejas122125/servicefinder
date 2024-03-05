@@ -25,6 +25,9 @@ export default function Navbar() {
           <a className="mr-5 hover:text-white" href="/">
             Home
           </a>
+          <a className="mr-5 hover:text-white" href="/customers">
+            Customers
+          </a>
           <a className="mr-5 hover:text-white" href="/jobs">
             Jobs
           </a>
@@ -34,7 +37,9 @@ export default function Navbar() {
           <a className="mr-5 hover:text-white" href="/hire">
             Hire
           </a>
-          <a className="mr-5 hover:text-white">About Us</a>
+          <a href="/about" className="mr-5 hover:text-white">
+            About Us
+          </a>
         </nav>
         <button className="inline-flex items-center bg-gray-800 border-0 py-1 px-3 focus:outline-none hover:bg-gray-700 rounded text-base mt-4 md:mt-0">
           {/* <a href="/Workersignin" className="mr-5 hover:text-white">WorkerSignin</a> */}

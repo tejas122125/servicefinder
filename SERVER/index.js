@@ -92,7 +92,7 @@ app.get("/failure", (req, res) => {
 });
 
 app.get("/user", (req, res) => {
-  console.log(req?.user);
+  console.log(req?.user); 
   res.json(req?.user || {});
 });
 

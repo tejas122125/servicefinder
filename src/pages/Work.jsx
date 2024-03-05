@@ -4,10 +4,15 @@ import Footer from "../components/Footer";
 import { saveAddress, saveWorkerToDb, setAddress } from "../appwrite/api";
 import useUserStore from '../userauth';
 const Work = () => {
+<<<<<<< HEAD
   const { userId, setUserId } = useUserStore();
   const { workerId, setWorkerId } = useUserStore();
 
   const [position, setPosition] = useState({ latitude: null, longitude: null });
+=======
+
+  const [position, setPosition] = useStates({ latitude: null, longitude: null });
+>>>>>>> aed3fd3fdda568ca6d63aca55584842a5cd28541
   const [response, setResponse] = useState(null);
   async function handleSubmit(e) {
     e.preventDefault();
