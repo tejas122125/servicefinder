@@ -98,7 +98,7 @@ export default function Category() {
   // TODO: add customer to worker's database
   function handleWorker(email) {
     console.log(email);
-    toast.success("Request Sent Successfully");
+    toast.success("Request Sent Successfully to the service finder");
   }
 
   return (
