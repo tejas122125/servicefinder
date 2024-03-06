@@ -14,7 +14,7 @@ const workers = [
     rate: 1000,
     available: true,
     experience: 10,
-    email: "kuweryfksj@nayak",
+    email: "sankaloksj@nayak",
   },
   {
     name: "Musaib Altaf",
