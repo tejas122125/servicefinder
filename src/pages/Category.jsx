@@ -36,7 +36,7 @@ const workers = [
     rate: 500,
     available: true,
     experience: 5,
-    email: "yash@gmail.com",
+    email: "sidhidyash@gmail.com",
   },
   {
     name: "Birjendra singh",
