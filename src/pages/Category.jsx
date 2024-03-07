@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 
 const workers = [
   {
-    name: " Vora ",
+    name: "mula Vora ",
     rating: 4.8,
     image:
       "https://media.licdn.com/dms/image/D4D03AQEUnLiVwSx2fg/profile-displayphoto-shrink_800_800/0/1684841819327?e=1714608000&v=beta&t=NKelT0GW2F5Qk3ccc1QAl1_hoF9Cr0gU0PLl3qkMouo",
