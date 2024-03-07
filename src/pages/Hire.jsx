@@ -131,7 +131,7 @@ setUserId(userid)
                       className="w-full bg-gray-800 bg-opacity-40 rounded border border-gray-700 focus:border-red-500 focus:bg-gray-900 focus:ring-2 focus:ring-red-900 text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                       // style={{ width: "150%" }}
                     >
-                      <option value="AN">Andaman and Nicobar Islands</option>
+                      <option value="AN">Andaman and Nicobar </option>
                       <option value="AP">Andhra Pradesh</option>
                       <option value="AR">Arunachal Pradesh</option>
                       <option value="AS">Assam</option>
