@@ -20,7 +20,6 @@ const UserWaiting = () => {
         // Fetch data initially
         fetchData();
     
-        // Fetch data every 5 seconds
         const interval = setInterval(fetchData, 5000);
     
         // Clean up interval on component unmount
