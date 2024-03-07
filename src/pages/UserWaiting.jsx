@@ -13,7 +13,7 @@ const UserWaiting = () => {
             setaccepted(true)
             setdata(jsonData);
           } catch (error) {
-            console.error('Error fetching data:', error);
+            console.error('Error fetching data please try again:', error);
           }
         };
     
