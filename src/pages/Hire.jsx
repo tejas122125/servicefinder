@@ -30,7 +30,7 @@ setUserId(userid)
         });
       });
     } else {
-      console.log("Geolocation is not available in your browser.");
+      console.log("Geolocation is not available in your browser. please update your browser");
     }
   }, []);
 
