@@ -14,7 +14,7 @@ const Workersignupotp = () => {
         const digit5 = document.getElementById('digit5').value;
         
         
-        const otp = digit1 + digit2 + digit3 + digit4 + digit5 + digit6;
+        const otp = digit1 + digit2 + digit3 + digit4 + digit5 ;
   
         // Now you can use the OTP for verification or further processing
         console.log('Entered OTP:', otp);
