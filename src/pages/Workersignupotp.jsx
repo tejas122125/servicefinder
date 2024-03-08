@@ -16,7 +16,7 @@ const Workersignupotp = () => {
         
         const otp = digit1 + digit2 + digit3 + digit4  ;
   
-        // Now you can use the OTP for verification or further processing
+
         console.log('Entered OTP:', otp);
     
          signUp.attemptPhoneNumberVerification({
