@@ -12,7 +12,7 @@ const Workersignupotp = () => {
         const digit3 = document.getElementById('digit3').value;
         const digit4 = document.getElementById('digit4').value;
         const digit5 = document.getElementById('digit5').value;
-        const digit6 = document.getElementById('digit6').value;
+        
         
         const otp = digit1 + digit2 + digit3 + digit4 + digit5 + digit6;
   
