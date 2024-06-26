@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 
 const workers = [
   {
-    name: "Ashit Vora ",
+    name: "mula Vora ",
     rating: 4.8,
     image:
       "https://media.licdn.com/dms/image/D4D03AQEUnLiVwSx2fg/profile-displayphoto-shrink_800_800/0/1684841819327?e=1714608000&v=beta&t=NKelT0GW2F5Qk3ccc1QAl1_hoF9Cr0gU0PLl3qkMouo",
@@ -14,7 +14,7 @@ const workers = [
     rate: 1000,
     available: true,
     experience: 10,
-    email: "kuweryfksj@nayak",
+    email: "sankaloksj@nayak",
   },
   {
     name: "Musaib Altaf",
@@ -31,45 +31,45 @@ const workers = [
     name: "Yash Nayak",
     rating: 1.5,
     image:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTsSb-gy3TF9KbuQ4jWFwyG-OIwugRBMSTqgyYyEdeUhA&s",
+      "https://imgs.search.brave.com/MWlI8P3aJROiUDO9A-LqFyca9kSRIxOtCg_Vf1xd9BA/rs:fit:860:0:0/g:ce/aHR0cHM6Ly90NC5m/dGNkbi5uZXQvanBn/LzAyLzE1Lzg0LzQz/LzM2MF9GXzIxNTg0/NDMyNV90dFg5WWlJ/SXllYVI3TmU2RWFM/TGpNQW15NEd2UEM2/OS5qcGc",
     id: "45",
     rate: 500,
     available: true,
     experience: 5,
-    email: "yash@nayak",
+    email: "sidhidyash@gmail.com",
   },
   {
     name: "Birjendra singh",
     rating: 3.5,
     image:
-      "https://mybestbio.com/wp-content/uploads/2023/08/traditional-Credit-Domestic-Helper-Loan-1.jpg",
+      "https://imgs.search.brave.com/MWlI8P3aJROiUDO9A-LqFyca9kSRIxOtCg_Vf1xd9BA/rs:fit:860:0:0/g:ce/aHR0cHM6Ly90NC5m/dGNkbi5uZXQvanBn/LzAyLzE1Lzg0LzQz/LzM2MF9GXzIxNTg0/NDMyNV90dFg5WWlJ/SXllYVI3TmU2RWFM/TGpNQW15NEd2UEM2/OS5qcGc",
     id: "45",
     rate: 400,
     available: true,
     experience: 5,
-    email: "yash@nayak",
+    email: "birjuyash@nayak",
   },
   {
     name: "Rajat sahu",
     rating: 4.1,
     image:
-      "https://mybestbio.com/wp-content/uploads/2023/08/traditional-Credit-Domestic-Helper-Loan-1.jpg",
+      "https://imgs.search.brave.com/MWlI8P3aJROiUDO9A-LqFyca9kSRIxOtCg_Vf1xd9BA/rs:fit:860:0:0/g:ce/aHR0cHM6Ly90NC5m/dGNkbi5uZXQvanBn/LzAyLzE1Lzg0LzQz/LzM2MF9GXzIxNTg0/NDMyNV90dFg5WWlJ/SXllYVI3TmU2RWFM/TGpNQW15NEd2UEM2/OS5qcGc",
     id: "45",
     rate: 700,
     available: true,
     experience: 5,
-    email: "yash@nayak",
+    email: "rajatayash@nayak",
   },
   {
     name: "Tajaswee yadav",
     rating: 4.5,
     image:
-      "https://www.india.com/wp-content/uploads/2022/12/google-ceo-sundar-pichai.jpg",
+      "https://imgs.search.brave.com/MWlI8P3aJROiUDO9A-LqFyca9kSRIxOtCg_Vf1xd9BA/rs:fit:860:0:0/g:ce/aHR0cHM6Ly90NC5m/dGNkbi5uZXQvanBn/LzAyLzE1Lzg0LzQz/LzM2MF9GXzIxNTg0/NDMyNV90dFg5WWlJ/SXllYVI3TmU2RWFM/TGpNQW15NEd2UEM2/OS5qcGc",
     id: "45",
     rate: 300,
     available: true,
     experience: 5,
-    email: "yash@nayak",
+    email: "tejasweeeyash@nayak",
   },
 ];
 
@@ -77,6 +77,7 @@ export default function Category() {
   const category = window.location.pathname.split("/")[2];
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [sortedWorkers, setSortedWorkers] = useState([...workers]);
+  const { userId, setUserId } = useUserStore();
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
@@ -97,7 +98,7 @@ export default function Category() {
   // TODO: add customer to worker's database
   function handleWorker(email) {
     console.log(email);
-    toast.success("Request Sent Successfully");
+    toast.success("Request Sent Successfully to the service finder");
   }
 
   return (

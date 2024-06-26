@@ -11,12 +11,12 @@ const Workersignupotp = () => {
         const digit2 = document.getElementById('digit2').value;
         const digit3 = document.getElementById('digit3').value;
         const digit4 = document.getElementById('digit4').value;
-        const digit5 = document.getElementById('digit5').value;
-        const digit6 = document.getElementById('digit6').value;
+      
         
-        const otp = digit1 + digit2 + digit3 + digit4 + digit5 + digit6;
+        
+        const otp = digit1 + digit2 + digit3 + digit4  ;
   
-        // Now you can use the OTP for verification or further processing
+
         console.log('Entered OTP:', otp);
     
          signUp.attemptPhoneNumberVerification({

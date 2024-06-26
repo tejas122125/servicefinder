@@ -1,11 +1,18 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import { saveAddress, saveWorkerToDb } from "../appwrite/api";
+import { saveAddress, saveWorkerToDb, setAddress } from "../appwrite/api";
 import useUserStore from '../userauth';
 const Work = () => {
+<<<<<<< HEAD
+  const { userId, setUserId } = useUserStore();
+  const { workerId, setWorkerId } = useUserStore();
+
+  const [position, setPosition] = useState({ latitude: null, longitude: null });
+=======
 
   const [position, setPosition] = useStates({ latitude: null, longitude: null });
+>>>>>>> aed3fd3fdda568ca6d63aca55584842a5cd28541
   const [response, setResponse] = useState(null);
   async function handleSubmit(e) {
     e.preventDefault();
@@ -13,20 +20,6 @@ const Work = () => {
     formData.append("latitude", position.latitude);
     formData.append("longitude", position.longitude);
 
-    // fetch("/KuchBhi", {
-    //   method: "POST",
-    //   body: formData
-    // })
-    //   .then(response => response.json())
-    //   .then(data => {
-    //     // Set the response received from the backend
-    //     setResponse(data);
-    //   })
-    //   .catch(error => {
-    //     console.error('Error:', error);
-    //   });
-    // form data yaha milega
-    // TODO: save data to database.
     const data = Object.fromEntries(formData.entries());
 
     console.log(data);
@@ -43,6 +36,7 @@ const Work = () => {
     }
  
 const workerid = await saveWorkerToDb(workerdata)
+setWorkerId(workerid)
 console.log("woreke",workerid)
 const address = {
   state: data.state,
@@ -54,7 +48,8 @@ const address = {
   latitude:+position.latitude,
   longitude:+position.longitude}
 
-const addressid =  saveAddress(address)
+const addressid = await saveAddress(address)
+setAddress(workerId,addressid)
 console.log("address",addressid)
 }
 

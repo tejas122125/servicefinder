@@ -13,14 +13,13 @@ const UserWaiting = () => {
             setaccepted(true)
             setdata(jsonData);
           } catch (error) {
-            console.error('Error fetching data:', error);
+            console.error('Error fetching data please try again:', error);
           }
         };
     
         // Fetch data initially
         fetchData();
     
-        // Fetch data every 5 seconds
         const interval = setInterval(fetchData, 5000);
     
         // Clean up interval on component unmount

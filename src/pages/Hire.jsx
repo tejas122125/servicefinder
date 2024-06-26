@@ -2,11 +2,12 @@ import React, { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { saveUserToDb } from "../appwrite/api";
-
+import useUserStore from '../userauth';
 const Hire = () => {
+  const { userId, setUserId } = useUserStore();
   const [position, setPosition] = useState({ latitude: null, longitude: null });
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
     const formData = new FormData(e.target);
     formData.append("latitude", position.latitude);
@@ -15,7 +16,8 @@ const Hire = () => {
     // form data yaha milega
     // TODO: save data to database.
     const data = Object.fromEntries(formData.entries());
-saveUserToDb(data)
+const userid  = await saveUserToDb(data)
+setUserId(userid)
     console.log(data);
   }
 
@@ -28,7 +30,7 @@ saveUserToDb(data)
         });
       });
     } else {
-      console.log("Geolocation is not available in your browser.");
+      console.log("Geolocation is not available in your browser. please update your browser");
     }
   }, []);
 
@@ -129,7 +131,7 @@ saveUserToDb(data)
                       className="w-full bg-gray-800 bg-opacity-40 rounded border border-gray-700 focus:border-red-500 focus:bg-gray-900 focus:ring-2 focus:ring-red-900 text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                       // style={{ width: "150%" }}
                     >
-                      <option value="AN">Andaman and Nicobar Islands</option>
+                      <option value="AN">Andaman and Nicobar </option>
                       <option value="AP">Andhra Pradesh</option>
                       <option value="AR">Arunachal Pradesh</option>
                       <option value="AS">Assam</option>
